@@ -1,6 +1,6 @@
 import {HttpClientModule} from '@angular/common/http';
 
-import { LoggerModule } from '@my/logger-lib';
+// import { LoggerModule } from '@my/logger-lib';
 
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -15,21 +15,27 @@ import {HomeComponent} from './home/home.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {SharedModule} from './shared/shared.module';
 import {SidebarComponent} from './sidebar/sidebar.component';
-import { CustomLogFormatterService } from './shared/logger/custom-log-formatter.service';
+
+//import { CustomLogFormatterService } from './shared/logger/custom-log-formatter.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    FlightBookingModule,
 
+    // FlightBookingModule, // Würde Lazy Loading verhindern
+
+    /*
     LoggerModule.forRoot({
       enableDebug: true,
       logFormatterImplementation: CustomLogFormatterService
     }),
+    */
 
     FlightApiModule.forRoot(),
+
     SharedModule.forRoot(),
+
     RouterModule.forRoot(APP_ROUTES, APP_EXTRA_OPTIONS)
   ],
   declarations: [

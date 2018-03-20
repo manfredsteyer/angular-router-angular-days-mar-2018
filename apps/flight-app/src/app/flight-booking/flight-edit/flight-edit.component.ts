@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import { CanExitComponent } from '../../shared/auth/exit.guard';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { Flight } from '@flight-workspace/flight-api';
 
 @Component({
   selector: 'app-flight-edit',
@@ -15,7 +16,8 @@ export class FlightEditComponent implements OnInit, CanExitComponent {
   showWarning = false;
 
   sender: Observer<boolean>;
-
+  flight: Flight;
+  
   constructor(private route: ActivatedRoute) {
   }
 
@@ -23,6 +25,11 @@ export class FlightEditComponent implements OnInit, CanExitComponent {
     this.route.params.subscribe(p => {
       this.id = p['id'];
       this.showDetails = p['showDetails'];
+    });
+
+
+    this.route.data.subscribe(data => {
+      this.flight = data['flight'];
     });
   }
 
